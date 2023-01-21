@@ -15,6 +15,7 @@
 
     <modules>
         <module>tracing-demo-parent</module>
+        <module>tracing-demo-spring-boot-starter</module>
         <module>tracing-demo-sidra</module>
         <module>tracing-demo-ira</module>
         <module>tracing-demo-rohan</module>

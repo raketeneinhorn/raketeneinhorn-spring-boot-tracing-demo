@@ -2,6 +2,7 @@ server:
   port: 8080
 
 logging:
+  config: classpath:tracing-demo-logback.xml
   level:
     org:
       springframework:
