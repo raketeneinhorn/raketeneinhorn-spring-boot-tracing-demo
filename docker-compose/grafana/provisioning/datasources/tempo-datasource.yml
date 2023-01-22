@@ -9,3 +9,4 @@ datasources:
     type: tempo
     orgId: 1
     url: http://tempo
+    uid: 760fa1c0-e9bc-46e2-a7b5-a5df04f2e9f7
