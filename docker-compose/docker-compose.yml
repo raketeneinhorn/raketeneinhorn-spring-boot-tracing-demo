@@ -1,0 +1,91 @@
+services:
+
+  loki:
+    image: grafana/loki:latest
+    ports:
+      - "3100:3100"
+    volumes:
+      - "loki_data:/loki"
+
+  tempo:
+    image: grafana/tempo:latest
+    ports:
+      - "9411:9411"
+    volumes:
+      - "./tempo/config/:/config/"
+      - "tempo_data:/var/tempo"
+    command: [ "--config.file=/config/tempo.yml" ]
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    volumes:
+      - "./grafana/provisioning/:/etc/grafana/provisioning/"
+      - "grafana_data:/var/lib/grafana"
+
+  sidra:
+    image: raketeneinhorn/tracing-demo-sidra:0.0.1-SNAPSHOT
+    depends_on:
+      - ira
+    ports:
+      - "8080:8080"
+    volumes:
+      - "sidra_logs:/workspace/logs"
+    environment:
+      TRACING_DEMO_SIDRA: "${TRACING_DEMO_SIDRA}"
+      TRACING_DEMO_IRA: "${TRACING_DEMO_IRA}"
+      TRACING_DEMO_ROHAN: "${TRACING_DEMO_ROHAN}"
+
+  sidra_promtail:
+    depends_on:
+      - loki
+    image: grafana/promtail:latest
+    volumes:
+      - "./promtail/config/:/etc/promtail/"
+      - "sidra_logs:/workspace/logs"
+    command: [ "-config.file=/etc/promtail/promtail.yml", "-config.expand-env=true" ]
+
+  ira:
+    image: raketeneinhorn/tracing-demo-ira:0.0.1-SNAPSHOT
+    depends_on:
+      - rohan
+    volumes:
+      - "ira_logs:/workspace/logs"
+    environment:
+      TRACING_DEMO_SIDRA: "${TRACING_DEMO_SIDRA}"
+      TRACING_DEMO_IRA: "${TRACING_DEMO_IRA}"
+      TRACING_DEMO_ROHAN: "${TRACING_DEMO_ROHAN}"
+  ira_promtail:
+    depends_on:
+      - loki
+    image: grafana/promtail:latest
+    volumes:
+      - "./promtail/config/:/etc/promtail/"
+      - "ira_logs:/workspace/logs"
+    command: [ "-config.file=/etc/promtail/promtail.yml", "-config.expand-env=true" ]
+
+  rohan:
+    image: raketeneinhorn/tracing-demo-rohan:0.0.1-SNAPSHOT
+    volumes:
+      - "rohan_logs:/workspace/logs"
+    environment:
+      TRACING_DEMO_SIDRA: "${TRACING_DEMO_SIDRA}"
+      TRACING_DEMO_IRA: "${TRACING_DEMO_IRA}"
+      TRACING_DEMO_ROHAN: "${TRACING_DEMO_ROHAN}"
+  rohan_promtail:
+    depends_on:
+      - loki
+    image: grafana/promtail:latest
+    volumes:
+      - "./promtail/config/:/etc/promtail/"
+      - "rohan_logs:/workspace/logs"
+    command: [ "-config.file=/etc/promtail/promtail.yml", "-config.expand-env=true" ]
+
+volumes:
+  loki_data:
+  tempo_data:
+  grafana_data:
+  sidra_logs:
+  ira_logs:
+  rohan_logs:

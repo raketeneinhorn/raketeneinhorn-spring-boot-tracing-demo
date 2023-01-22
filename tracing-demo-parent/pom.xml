@@ -92,6 +92,11 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
+					<image>
+						<bindings>
+							<binding>${project.artifactId}_logs:/workspace/logs:rw</binding>
+						</bindings>
+					</image>
 				</configuration>				
 			</plugin>
 		</plugins>

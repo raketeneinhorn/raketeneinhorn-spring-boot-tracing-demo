@@ -18,6 +18,7 @@
 		<java.version>17</java.version>
 
 		<spring-boot.repackage.skip>true</spring-boot.repackage.skip>
+		<spring-boot.build-image.skip>true</spring-boot.build-image.skip>
 	</properties>
 
 	<dependencies>
