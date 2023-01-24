@@ -9,10 +9,11 @@ datasources:
     type: loki
     orgId: 1
     url: http://loki:3100
+    uid: loki
     jsonData:
       manageAlerts: false
       derivedFields:
-        - datasourceUid: 760fa1c0-e9bc-46e2-a7b5-a5df04f2e9f7
+        - datasourceUid: tempo
           matcherRegex: "\"trace\":\"(\\w+?)\""
           name: derivedTraceId
           url: '$${__value.raw}'
