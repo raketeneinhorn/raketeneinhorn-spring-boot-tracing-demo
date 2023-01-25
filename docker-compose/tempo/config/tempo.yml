@@ -1,0 +1,11 @@
+distributor:
+  receivers:
+    zipkin:
+
+target: all
+
+storage:
+  trace:
+    backend: local
+    local:
+      path: /var/tempo
