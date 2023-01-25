@@ -6,6 +6,16 @@ A project demonstrating remote tracing with Spring Boot services and the Grafana
 
 This project has been setup to do a live demonstration of remote tracing, remote logging and metrics with Spring Boot.
 
+## How to run
+
+ mvn clean install spring-boot:build-image
+ docker-compose --project-directory docker-compose up
+
+[NOTE]
+====
+* `mvn clean` usually is not necessary.
+* `mvn install` is needed to due to some complicated mvn setup which might be solved soon™.
+====
 ## Contributions
 
 Are very welcome.
