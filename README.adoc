@@ -1,0 +1,42 @@
+# Raketeneinhorn Spring Boot Tracing Demo
+
+A project demonstrating remote tracing with three Spring Boot services and the Grafana stack. Also shows how to do remote logging and provide metrics with Spring Boot.
+
+## Context
+
+This project has been setup to do a live demonstration of remote tracing, remote logging and metrics with Spring Boot.
+
+## Contributions
+
+Are very welcome.
+
+## Tech Stack
+
+* https://spring.io/projects/spring-boot[Spring Boot 2.7.x]
+** https://spring.io/projects/spring-cloud-sleuth[Spring Cloud Sleuth]
+** https://zipkin.io[Zipkin Tracing]
+* https://grafana.com/oss/grafana/[Grafana]
+** https://grafana.com/oss/tempo/[Grafana Tempo]
+** https://grafana.com/oss/loki/[Grafana Loki]
+*** https://grafana.com/docs/loki/latest/clients/promtail/[Loki Promtail Client]
+** https://prometheus.io[Prometheus]
+* https://docs.docker.com/compose/[Docker Compose]
+
+## Limitations
+
+The code itself is far from being polished. It should be good enough to give you an idea on how to implement remote tracing in your own Spring Boot services.
+
+## ToDo
+
+* Use https://opentelemetry.io[OpenTelemetry] instead of Zipkin as the backend for Sleuth.
+* Configure Tempo to receive Open Telemetry data.
+* Configure service graphs in Grafana.
+* Check if `-Dorg.springframework.cloud.bindings.boot.enable=true` can and should be disabled.
+
+## Questions
+
+* What is the recommended way to attach additional data to a trace?
+
+## License
+
+Raketeneinhorn Spring Boot Trachig Demo is Open Source software released under the https://www.apache.org/licenses/LICENSE-2.0.html[Apache 2.0 license].
