@@ -1,6 +1,6 @@
 # Raketeneinhorn Spring Boot Tracing Demo
 
-A project demonstrating remote tracing with three Spring Boot services and the Grafana stack. Also shows how to do remote logging and provide metrics with Spring Boot.
+A project demonstrating remote tracing with Spring Boot services and the Grafana stack. Also shows how to do remote logging and provide metrics with Spring Boot.
 
 ## Context
 
