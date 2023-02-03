@@ -1,8 +1,6 @@
 distributor:
   receivers:
-    otlp:
-      protocols:
-        grpc:
+    zipkin:
 
 metrics_generator:
   registry:

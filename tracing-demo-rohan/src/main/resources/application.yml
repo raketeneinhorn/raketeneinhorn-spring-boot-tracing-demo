@@ -25,10 +25,7 @@ logging:
 spring:
   sleuth:
     propagation:
-      type: OT_TRACER
-    otel:
-      config:
-        trace-id-ratio-based: 1.0
+      type: W3C
 
 tracing:
   demo:

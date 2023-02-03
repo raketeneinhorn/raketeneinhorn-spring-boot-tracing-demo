@@ -32,7 +32,7 @@ services:
   tempo:
     image: grafana/tempo:latest
     ports:
-      - "4317:4317"
+      - "9411:9411"
     volumes:
       - "./tempo/config/:/config/"
       - "tempo_data:/var/tempo"
@@ -59,7 +59,7 @@ services:
     volumes:
       - "sidra_logs:/workspace/logs"
     environment:
-      SPRING_SLEUTH_OTEL_EXPORTER_OTLP_ENDPOINT: http://tempo:4317/
+      SPRING_ZIPKIN_BASE_URL: http://tempo:9411/
       TRACING_DEMO_SIDRA: "${TRACING_DEMO_SIDRA}"
       TRACING_DEMO_IRA: "${TRACING_DEMO_IRA}"
       TRACING_DEMO_ROHAN: "${TRACING_DEMO_ROHAN}"
@@ -80,7 +80,7 @@ services:
     volumes:
       - "ira_logs:/workspace/logs"
     environment:
-      SPRING_SLEUTH_OTEL_EXPORTER_OTLP_ENDPOINT: http://tempo:4317/
+      SPRING_ZIPKIN_BASE_URL: http://tempo:9411/
       TRACING_DEMO_SIDRA: "${TRACING_DEMO_SIDRA}"
       TRACING_DEMO_IRA: "${TRACING_DEMO_IRA}"
       TRACING_DEMO_ROHAN: "${TRACING_DEMO_ROHAN}"
@@ -98,7 +98,7 @@ services:
     volumes:
       - "rohan_logs:/workspace/logs"
     environment:
-      SPRING_SLEUTH_OTEL_EXPORTER_OTLP_ENDPOINT: http://tempo:4317/
+      SPRING_ZIPKIN_BASE_URL: http://tempo:9411/
       TRACING_DEMO_SIDRA: "${TRACING_DEMO_SIDRA}"
       TRACING_DEMO_IRA: "${TRACING_DEMO_IRA}"
       TRACING_DEMO_ROHAN: "${TRACING_DEMO_ROHAN}"
