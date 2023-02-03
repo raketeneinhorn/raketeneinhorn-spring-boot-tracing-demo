@@ -24,7 +24,7 @@ Are very welcome.
 
 * https://spring.io/projects/spring-boot[Spring Boot 2.7.x]
 ** https://spring.io/projects/spring-cloud-sleuth[Spring Cloud Sleuth]
-** https://opentelemetry.io[OpenTelemetry]
+** https://zipkin.io[Zipkin]
 * https://grafana.com/oss/grafana/[Grafana]
 ** https://grafana.com/oss/tempo/[Grafana Tempo]
 ** https://grafana.com/oss/loki/[Grafana Loki]
@@ -38,7 +38,6 @@ The code itself is far from being polished. It should be good enough to give you
 
 ## ToDo
 
-* Configure service graphs in Grafana.
 * Check if `-Dorg.springframework.cloud.bindings.boot.enable=true` can and should be disabled.
 * Investigate what `spring.sleuth.otel.log.slf4j.enabled` can do for us.
 
