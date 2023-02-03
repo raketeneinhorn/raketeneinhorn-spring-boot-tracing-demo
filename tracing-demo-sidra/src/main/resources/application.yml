@@ -22,6 +22,14 @@ logging:
     httpclient:
       wire: DEBUG
 
+spring:
+  sleuth:
+    propagation:
+      type: OT_TRACER
+    otel:
+      config:
+        trace-id-ratio-based: 1.0
+
 tracing:
   demo:
     sidra: http://localhost:8080
